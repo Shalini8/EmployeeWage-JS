@@ -12,17 +12,15 @@ if (employeeChecker == IS_ABSENT) {
     console.log("Employee is Absent!");
 }
 
-//Generating a random number
-let empCheckHrs = Math.floor((Math.random() * 10) % 3);
-
 //Assigning variables value as const as our intention is never changing there values
 const IS_PART_TIME =1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
+const NUM_OF_WORKING_DAYS = 20;
 
-let empHours = 0;
+
  //Function of switch case to calculate wage according to random values generated
 
 function getWorkingHours(empCheckHrs){
@@ -38,7 +36,11 @@ function getWorkingHours(empCheckHrs){
 
     }
 }
+let totalEmpHours = 0;
+for(let day = 0; day< NUM_OF_WORKING_DAYS; day++){
+ let empCheckHrs = Math.floor((Math.random() * 10) % 3);
+totalEmpHours += getWorkingHours(empCheckHrs);
+}
 
-empHours = getWorkingHours(empCheckHrs);
-let empWage = empHours * WAGE_PER_HOUR;
-console.log("working hrs is: " + empHours ,"Employee wage is $" + empWage);
+let empWage = totalEmpHours * WAGE_PER_HOUR;
+console.log("working hrs is: " + totalEmpHours +"hrs" ,"Employee wage is $" + empWage);
