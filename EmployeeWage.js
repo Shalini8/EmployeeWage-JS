@@ -19,6 +19,7 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const NUM_OF_WORKING_DAYS = 20;
+const MAX_HRS_IN_MONTH = 160;
 
 
  //Function of switch case to calculate wage according to random values generated
@@ -37,10 +38,12 @@ function getWorkingHours(empCheckHrs){
     }
 }
 let totalEmpHours = 0;
-for(let day = 0; day< NUM_OF_WORKING_DAYS; day++){
- let empCheckHrs = Math.floor((Math.random() * 10) % 3);
-totalEmpHours += getWorkingHours(empCheckHrs);
+let totalWorkingDays = 0;
+while ( totalEmpHours <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS ){
+        totalWorkingDays ++;
+        let empCheckHrs = Math.floor((Math.random() * 10) % 3);
+        totalEmpHours += getWorkingHours(empCheckHrs);
 }
 
 let empWage = totalEmpHours * WAGE_PER_HOUR;
-console.log("working hrs is: " + totalEmpHours +"hrs" ,"Employee wage is $" + empWage);
+console.log("Total Days :" + totalWorkingDays + "  working hrs is: " + totalEmpHours +"hrs" ,"Employee wage is $" + empWage);
